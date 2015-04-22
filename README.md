@@ -5,7 +5,7 @@
 
  - 平常工作经常grep关键词，出来的很多无用的内容，需要从这些再次筛选
  - grep 需要带很多不同的参数
- - 针对widget、php、js、less我所经常的遇到的grep的方式做了一些快捷的方式
+ - 针对widget、php、js、less我所经常的遇到的grep的方式,写了一个脚本
  - 排除 *svn, output, build文件夹下的文件
 
 ## 安装 ##
