@@ -1,0 +1,76 @@
+#!/bin/bash
+LOCAL_PATH=`pwd`
+includeStr='*.php'
+#echo $LOCAL_PATH
+function showHelp(){
+    echo "==========================================="
+    echo "Description: Help you to grep fast"
+    
+    echo "    example:"
+    echo "        so test -w        grep \$__widget__->load('test') "
+    echo "        so test -p        grep keywords in php "
+    echo "        so test -j        grep keywords in js"
+    echo "        so test -l        grep keywords in less "
+    echo "        so test -c        grep keywords in css "
+    echo "==========================================="
+}
+if [ -z $2 ] ;then
+	soType=''
+	includeStr='*'
+#	echo 'second param is empty,------'
+else 
+	case $2 in 
+		"-w"|"-widget"|"wp")
+		soType="\\$__widget__.*load.*"
+		includeStr='*.php'
+		;;
+
+		"-j"|"-js")
+		soType=""
+		includeStr='*.js'
+		;;
+
+		"-p"|"-php")
+		soType=""
+		includeStr='*.php'
+		;;
+
+		"-l"|"-less")
+		soType=""
+		includeStr='*.less'
+		;;
+
+   		"-c"|"-css")
+		soType=""
+		includeStr='*.css'
+		;;
+
+
+	        *)
+	        soType=''
+		includeStr='*'
+	        ;;
+	esac
+fi
+if [ -z $1 ] ;then
+	echo -e "\E[31;40mPlease input arguments.\n"; tput sgr0
+else 
+	case $1 in 
+		"-h"|"-hellp")
+	showHelp	
+	exit
+        ;;
+	*)
+	egrep -rni "$soType""$1" --include=$includeStr *  --color | egrep -v '.*output.*|.*_build.*|.*\.svn.*'|egrep -rni "$soType""$1" --color
+	echo "$soType-""$1-""$includeStr"
+	;;
+	esac
+fi
+echo '-------------------grep end---------------------------------'
+# if [ -z $1 ] ;then
+# 	echo -e "\E[31;40mPlease input arguments.\n"; tput sgr0
+# else 
+# 	 #egrep -rni ".widget__.*load*.*$1" --include=*.php *  --color | egrep -v '.output.' --color
+# 	 egrep -rni "$soType""$1" --include=*.php *  --color | egrep -v '.*output.*' --color
+# 	 echo "$soType""$1"
+# fi
