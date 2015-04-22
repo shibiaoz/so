@@ -9,16 +9,20 @@
  - 排除 *svn, output, build文件夹下的文件
 
 ## 安装 ##
- - 在你的开发机，cd ~/bin 
- - wget 
+ - 在你的ocean上，cd ~/bin 
+ - scp zhangshibiao@cp01-rdqa-dev144.cp01.baidu.com:~/bin/so ~/bin/
+ - 或者down之后把so放在~/bin下
 
  ## 使用 ##
 
 	demo 搜索  vertical_head
- - so -h  提示信息
- - so vertical_head -w   搜索     $__widget__->loa(vertical
- - so vertical_head -p   在php文件中搜索
- - so vertical_head -j   在js文件中搜索
- - so vertical_head -l   less
- - so vertical_head -c   css
- - so vertical_head      默认所有的
+
+```
+so -h  提示信息
+so vertical_head -w   搜索     $__widget__->loa(vertical_head)
+so vertical_head -p   在php文件中搜索
+so vertical_head -j   在js文件中搜索
+so vertical_head -l   less
+so vertical_head -c   css
+so vertical_head      默认所有的
+```
